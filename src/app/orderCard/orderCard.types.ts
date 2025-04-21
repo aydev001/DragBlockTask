@@ -1,10 +1,13 @@
 import { OrderStatus, PaymentStatus } from "../../types/enums"
 
+type OrderStatusLiteral = `${OrderStatus}`;
+type PaymentStatusLiteral = `${PaymentStatus}`;
+
 export interface IOrderCard {
     id: number
-    status : OrderStatus
+    status : OrderStatusLiteral
     price : number
-    payment : PaymentStatus
+    payment : PaymentStatusLiteral
     time : string
     orderItems: string[]
 }

@@ -8,7 +8,7 @@ interface OrderCardProps {
 }
 
 const OrderCard: React.FC<OrderCardProps> = ({ orderCardData }) => {
-    console.log(orderCardData)
+    
     return (
         <div className="rounded-sm border-[1px] border-gray-200 bg-white select-none">
             <div className="flex justify-between items-center gap-1 p-[8px]">
@@ -29,7 +29,7 @@ const OrderCard: React.FC<OrderCardProps> = ({ orderCardData }) => {
                 </div>
             </div>
             <div className="p-[8px]">
-                <ButtonOrderStatus status={orderCardData.status}/>
+                <ButtonOrderStatus status={orderCardData.status} orderId={orderCardData.id}/>
             </div>
         </div>
     )

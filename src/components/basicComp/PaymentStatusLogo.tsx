@@ -31,7 +31,7 @@ const PaymentStatusLogo: React.FC<PaymentStatusLogoProps> = ({ status }) => {
                 <div>
                     <img className="w-[16px] h-[16px]" src={paymeLogo} alt="" />
                 </div>
-                <div>
+                <div className="text-gray-500">
                     <FaStoreAlt />
                 </div>
             </div>
@@ -44,7 +44,7 @@ const PaymentStatusLogo: React.FC<PaymentStatusLogoProps> = ({ status }) => {
                 <div>
                     <img className="w-[16px] h-[16px]" src={clickLogo} alt="" />
                 </div>
-                <div>
+                <div className="text-gray-500">
                     <FaStoreAlt />
                 </div>
             </div>

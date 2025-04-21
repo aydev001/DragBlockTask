@@ -2,12 +2,17 @@ import { FiCheck } from "react-icons/fi";
 import { CgClose } from "react-icons/cg";
 import React from 'react'
 import { OrderStatus } from '../../types/enums'
+import { useDispatch } from "react-redux";
+import { changeOrderStatus } from "../../app/orderCard/orderCardSlice";
 
 interface ButtonOrderStatusProps {
+    orderId : number
     status: "new" | "preparation" | "ready" | "ontheway"
 }
 
-const ButtonOrderStatus: React.FC<ButtonOrderStatusProps> = ({ status }) => {
+const ButtonOrderStatus: React.FC<ButtonOrderStatusProps> = ({orderId, status }) => {
+
+    const dispatch = useDispatch()
 
     if (status === OrderStatus.NEW) {
         return (
@@ -18,7 +23,7 @@ const ButtonOrderStatus: React.FC<ButtonOrderStatusProps> = ({ status }) => {
                         Отменить
                     </div>
                 </button>
-                <button className="btn btn-solid-blue">
+                <button onClick={() => dispatch(changeOrderStatus({ id: orderId, changeStatus: OrderStatus.PREPARATION }))} className="btn btn-solid-blue">
                     <div>
                         <FiCheck />
                     </div>
@@ -33,7 +38,7 @@ const ButtonOrderStatus: React.FC<ButtonOrderStatusProps> = ({ status }) => {
     if (status === OrderStatus.PREPARATION) {
         return (
             <div className="text-[14px]">
-                <button className="btn btn-outline-indigo">
+                <button onClick={() => dispatch(changeOrderStatus({ id: orderId, changeStatus: OrderStatus.READY }))} className="btn btn-outline-indigo">
                     <div>
                         <FiCheck />
                     </div>
@@ -48,7 +53,7 @@ const ButtonOrderStatus: React.FC<ButtonOrderStatusProps> = ({ status }) => {
     if (status === OrderStatus.READY) {
         return (
             <div className="text-[14px]">
-                <button className="btn btn-outline-indigo">
+                <button onClick={() => dispatch(changeOrderStatus({ id: orderId, changeStatus: OrderStatus.ONTHEWAY }))} className="btn btn-outline-indigo">
                     <div>
                         Завершить
                     </div>
