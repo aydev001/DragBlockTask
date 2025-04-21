@@ -10,7 +10,7 @@ const initialState: IOrdersState = {
             payment: PaymentStatus.CLICK,
             price: 532000,
             time: '14:20',
-            orderItems: ["1x Гамбургер", "1x Пепси 0.5", "1x Сок апельсиновый"]
+            orderItems: ["1x Гамбургер", "2x Пепси 0.5", "1x Сок апельсиновый"]
         },
         {
             id: 331284,
@@ -18,7 +18,7 @@ const initialState: IOrdersState = {
             payment: PaymentStatus.CASH,
             price: 589000,
             time: '14:22',
-            orderItems: ["1x Лаваш миясной", "1x Фри картошка", "1x Мохито"]
+            orderItems: ["3x Лаваш миясной", "1x Фри картошка", "2x Мохито"]
         },
         {
             id: 336781,
@@ -26,7 +26,7 @@ const initialState: IOrdersState = {
             payment: PaymentStatus.PAYME,
             price: 576000,
             time: '14:25',
-            orderItems: ["1x Чизбургер", "1x Сэндвич", "1x Пепси 0.5", "1x Салат"]
+            orderItems: ["1x Чизбургер", "3x Сэндвич", "1x Пепси 0.5"]
         },
         {
             id: 339152,
@@ -34,7 +34,7 @@ const initialState: IOrdersState = {
             payment: PaymentStatus.PAYME,
             price: 548000,
             time: '14:26',
-            orderItems: ["1x Гамбургер", "1x Мохито", "1x Фри картошка"]
+            orderItems: ["3x Гамбургер", "2x Мохито", "1x Фри картошка"]
         },
         {
             id: 341923,
@@ -42,7 +42,7 @@ const initialState: IOrdersState = {
             payment: PaymentStatus.CLICK,
             price: 560000,
             time: '14:27',
-            orderItems: ["1x Шаурма", "1x Пепси 0.5", "1x Чизбургер"]
+            orderItems: ["1x Шаурма", "1x Пепси 0.5", "3x Чизбургер"]
         },
         {
             id: 346218,
@@ -50,15 +50,15 @@ const initialState: IOrdersState = {
             payment: PaymentStatus.CASH,
             price: 594000,
             time: '14:29',
-            orderItems: ["1x Салат", "1x Сок апельсиновый", "1x Фри картошка", "1x Лаваш миясной"]
+            orderItems: ["1x Салат", "2x Сок апельсиновый", "1x Лаваш миясной"]
         },
         {
             id: 350019,
-            status: OrderStatus.PREPARATION,
+            status: OrderStatus.ONTHEWAY,
             payment: PaymentStatus.CLICK,
             price: 515000,
             time: '14:31',
-            orderItems: ["1x Пепси 0.5", "1x Сэндвич", "1x Салат"]
+            orderItems: ["1x Пепси 0.5", "1x Сэндвич", "2x Салат"]
         },
         {
             id: 356731,
@@ -70,11 +70,11 @@ const initialState: IOrdersState = {
         },
         {
             id: 361287,
-            status: OrderStatus.READY,
+            status: OrderStatus.ONTHEWAY,
             payment: PaymentStatus.PAYME,
             price: 590000,
             time: '14:33',
-            orderItems: ["1x Пепси 0.5", "1x Шаурма", "1x Сэндвич"]
+            orderItems: ["1x Пепси 0.5", "2x Шаурма", "1x Сэндвич"]
         },
         {
             id: 378945,
@@ -82,7 +82,7 @@ const initialState: IOrdersState = {
             payment: PaymentStatus.CLICK,
             price: 525000,
             time: '14:34',
-            orderItems: ["1x Чизбургер", "1x Сок апельсиновый", "1x Фри картошка", "1x Мохито"]
+            orderItems: ["1x Чизбургер", "1x Сок апельсиновый", "3x Мохито"]
         }
 
     ]

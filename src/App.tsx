@@ -1,17 +1,12 @@
-import { useSelector } from 'react-redux'
-import { RootState } from './app/store'
-import Header from './components/Header'
-import Content from './components/Content'
+import Header from './components/layoutComp/Header'
+import Content from './components/layoutComp/Content'
 
 const App = () => {
-  const {statusBlocks} = useSelector((state: RootState)  => state.statusBlock)
-  console.log(statusBlocks)
+  
   return (
-    <div className='h-[100vh] bg-gray-100 p-[5px]'>
+    <div className='h-[100vh] bg-gray-100 p-[5px] text-neutral-700'>
       <Header/>
-      <Content>
-        Content
-      </Content>
+      <Content/>
     </div>
   )
 }

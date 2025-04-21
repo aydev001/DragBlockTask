@@ -1,6 +1,6 @@
 import { OrderStatus, PaymentStatus } from "../../types/enums"
 
-interface IOrderCard {
+export interface IOrderCard {
     id: number
     status : OrderStatus
     price : number
