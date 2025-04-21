@@ -1,12 +1,13 @@
 export enum OrderStatus {
-    NEW = "Новый",
-    PREPARATION = "Загатовка",
-    READY = "Готов",
-    ONTHEWAY = "Курьер в пути"
+    NEW = "new",
+    PREPARATION = "preparation",
+    READY = "ready",
+    ONTHEWAY = "ontheway"
 }
 
 export enum PaymentStatus {
-    CASH = "CASH",
-    PAYME = "PAYME",
-    CLICK = "CLICK",
+    CASH = "cash",
+    PAYME = "payme",
+    CLICK = "click",
 }
+

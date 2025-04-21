@@ -2,6 +2,7 @@ import { OrderStatus } from "../../types/enums"
 
 interface IOrderCard {
     id: number
+    title : string
     blockStatus: OrderStatus
 }
 
