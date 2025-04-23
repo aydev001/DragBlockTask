@@ -3,7 +3,13 @@ import { OrderStatus, PaymentStatus } from "../../types/enums";
 import { IOrderCard, IOrdersState } from "./orderCard.types";
 
 const initialState: IOrdersState = {
-    searchOrderId : null,
+    searchOrderId: null,
+    filtredItems: {
+        new: [],
+        preparation: [],
+        ready: [],
+        ontheway: []
+    },
     orderCards: [
         {
             id: 328945,
@@ -97,17 +103,41 @@ const orderCardSlice = createSlice({
             state,
             action: PayloadAction<{ id: number; newStatus: `${OrderStatus}` | undefined }>
         ) => {
-            const order = state.orderCards.find((order) => order.id === action.payload.id);
-            if (order && action.payload.newStatus) {
-                order.status = action.payload.newStatus;
+            switch (action.payload.newStatus) {
+                case ("new"): {
+                    const newData = state.filtredItems.new.find(item => item.id === action.payload.id)
+                    state.filtredItems.new = state.filtredItems.new.filter(order => order.id !== action.payload.id)
+                    state.filtredItems.preparation = [...state.filtredItems.preparation, {...newData, status : "preparation"}]
+                    break
+                }
+                case ("preparation"): {
+                    const newData = state.filtredItems.preparation.find(item => item.id === action.payload.id)
+                    state.filtredItems.preparation = state.filtredItems.preparation.filter(order => order.id !== action.payload.id)
+                    state.filtredItems.ready = [...state.filtredItems.ready, {...newData, status : "ready"}]
+                    break
+                }
+                case ("ready"): {
+                    const newData = state.filtredItems.ready.find(item => item.id === action.payload.id)
+                    state.filtredItems.ready = state.filtredItems.ready.filter(order => order.id !== action.payload.id)
+                    state.filtredItems.ontheway = [...state.filtredItems.ontheway, {...newData, status : "ontheway"}]
+                    break
+                }
+
             }
+
         },
 
-        changeAllStatusEnd: (
+        saveAllFiltredOrderCards: (
             state,
-            action: PayloadAction<IOrderCard[]>
+            action: PayloadAction<
+                {
+                    new: IOrderCard[];
+                    preparation: IOrderCard[];
+                    ready: IOrderCard[];
+                    ontheway: IOrderCard[];
+                }>
         ) => {
-            state.orderCards = action.payload
+            state.filtredItems = action.payload
         },
 
         changeSearchId: (
@@ -119,6 +149,6 @@ const orderCardSlice = createSlice({
     }
 })
 
-export const { setOrderStatus, changeAllStatusEnd, changeSearchId } = orderCardSlice.actions
+export const { setOrderStatus, saveAllFiltredOrderCards, changeSearchId } = orderCardSlice.actions
 
 export default orderCardSlice.reducer

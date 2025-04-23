@@ -5,14 +5,20 @@ type PaymentStatusLiteral = `${PaymentStatus}`;
 
 export interface IOrderCard {
     id: number
-    status : OrderStatusLiteral
-    price : number
-    payment : PaymentStatusLiteral
-    time : string
+    status: OrderStatusLiteral
+    price: number
+    payment: PaymentStatusLiteral
+    time: string
     orderItems: string[]
 }
 
 export interface IOrdersState {
-    searchOrderId : number | null
+    searchOrderId: number | null,
+    filtredItems: {
+        new: IOrderCard[];
+        preparation: IOrderCard[];
+        ready: IOrderCard[];
+        ontheway: IOrderCard[];
+    }
     orderCards: IOrderCard[]
 }
