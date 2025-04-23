@@ -13,5 +13,6 @@ export interface IOrderCard {
 }
 
 export interface IOrdersState {
+    searchOrderId : number | null
     orderCards: IOrderCard[]
 }

@@ -4,6 +4,8 @@ import PaymentStatusLogo from "./PaymentStatusLogo"
 import { IOrderCard } from "../../app/orderCard/orderCard.types"
 import { useSortable } from "@dnd-kit/sortable"
 import { CSS } from "@dnd-kit/utilities"
+import { useSelector } from "react-redux"
+import { RootState } from "../../app/store"
 
 interface OrderCardProps {
     orderCardData: IOrderCard
@@ -18,9 +20,12 @@ const OrderCard: React.FC<OrderCardProps> = ({ orderCardData }) => {
         transition,
     }
 
+    const { searchOrderId } = useSelector((state: RootState) => state.orderCard);
+
+
     return (
         <div ref={setNodeRef} {...attributes} style={style}>
-            <div className="rounded-sm border-[1px] border-gray-200 bg-white select-none">
+            <div className={`rounded-sm  ${searchOrderId === orderCardData.id? "border-red-500 border-[3px]" : "border-gray-200 border-[1px]"} bg-white select-none`}>
                 <div {...listeners} className="cursor-move">
                     <div className="flex justify-between items-center gap-1 p-[8px]">
                         <div className="text-[14px]">

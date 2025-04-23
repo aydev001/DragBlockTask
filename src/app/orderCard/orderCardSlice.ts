@@ -3,6 +3,7 @@ import { OrderStatus, PaymentStatus } from "../../types/enums";
 import { IOrderCard, IOrdersState } from "./orderCard.types";
 
 const initialState: IOrdersState = {
+    searchOrderId : null,
     orderCards: [
         {
             id: 328945,
@@ -107,10 +108,17 @@ const orderCardSlice = createSlice({
             action: PayloadAction<IOrderCard[]>
         ) => {
             state.orderCards = action.payload
+        },
+
+        changeSearchId: (
+            state,
+            action: PayloadAction<number>
+        ) => {
+            state.searchOrderId = action.payload
         }
     }
 })
 
-export const { setOrderStatus, changeAllStatusEnd } = orderCardSlice.actions
+export const { setOrderStatus, changeAllStatusEnd, changeSearchId } = orderCardSlice.actions
 
 export default orderCardSlice.reducer

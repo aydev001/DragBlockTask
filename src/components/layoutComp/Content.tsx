@@ -11,11 +11,11 @@ import {
   DragEndEvent
 } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IOrderCard } from "../../app/orderCard/orderCard.types";
 import DropContainer from "../basicComp/DropContainer";
 import { useDispatch } from "react-redux";
-import { changeAllStatusEnd } from "../../app/orderCard/orderCardSlice";
+import { changeAllStatusEnd} from "../../app/orderCard/orderCardSlice";
 
 
 interface ItemsState {
@@ -39,10 +39,6 @@ const Content = () => {
     }
   }
   const [items, setItems] = useState<ItemsState>(filtredOrders(orderCards)); 
-  
-  useEffect(() => {
-    setItems(filtredOrders(orderCards));
-  }, [orderCards]);
   
 
   const sensors = useSensors(
@@ -150,8 +146,6 @@ const Content = () => {
     });
 
     dispatch(changeAllStatusEnd([...items.new, ...items.preparation, ...items.ready, ...items.ontheway]))
-
-    
   };
 
 
