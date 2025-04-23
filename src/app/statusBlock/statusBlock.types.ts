@@ -1,11 +1,11 @@
 import { OrderStatus } from "../../types/enums"
 
-interface IOrderCard {
+export interface IStatusBlock {
     id: number
     title : string
     blockStatus: OrderStatus
 }
 
 export interface IOrdersState {
-    statusBlocks: IOrderCard[]
+    statusBlocks: IStatusBlock[]
 }

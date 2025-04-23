@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { OrderStatus, PaymentStatus } from "../../types/enums";
-import { IOrdersState } from "./orderCard.types";
+import { IOrderCard, IOrdersState } from "./orderCard.types";
 
 const initialState: IOrdersState = {
     orderCards: [
@@ -92,21 +92,25 @@ const orderCardSlice = createSlice({
     name: "orderCardSlice",
     initialState,
     reducers: {
-        changeOrderStatus: (
+        setOrderStatus: (
             state,
-            action: PayloadAction<{ id: number; changeStatus: OrderStatus }>
-          ) => {
-            const index = state.orderCards.findIndex(item => item.id === action.payload.id);
-            if (index !== -1) {
-              const [order] = state.orderCards.splice(index, 1);
-              order.status = action.payload.changeStatus;
-              state.orderCards.push(order);
+            action: PayloadAction<{ id: number; newStatus: `${OrderStatus}` | undefined }>
+        ) => {
+            const order = state.orderCards.find((order) => order.id === action.payload.id);
+            if (order && action.payload.newStatus) {
+                order.status = action.payload.newStatus;
             }
-          }
-          
+        },
+
+        changeAllStatusEnd: (
+            state,
+            action: PayloadAction<IOrderCard[]>
+        ) => {
+            state.orderCards = action.payload
+        }
     }
 })
 
-export const { changeOrderStatus } = orderCardSlice.actions
+export const { setOrderStatus, changeAllStatusEnd } = orderCardSlice.actions
 
 export default orderCardSlice.reducer

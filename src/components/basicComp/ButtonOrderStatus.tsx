@@ -3,14 +3,14 @@ import { CgClose } from "react-icons/cg";
 import React from 'react'
 import { OrderStatus } from '../../types/enums'
 import { useDispatch } from "react-redux";
-import { changeOrderStatus } from "../../app/orderCard/orderCardSlice";
+import { setOrderStatus } from "../../app/orderCard/orderCardSlice";
 
 interface ButtonOrderStatusProps {
-    orderId : number
+    orderId: number
     status: "new" | "preparation" | "ready" | "ontheway"
 }
 
-const ButtonOrderStatus: React.FC<ButtonOrderStatusProps> = ({orderId, status }) => {
+const ButtonOrderStatus: React.FC<ButtonOrderStatusProps> = ({ orderId, status }) => {
 
     const dispatch = useDispatch()
 
@@ -23,7 +23,7 @@ const ButtonOrderStatus: React.FC<ButtonOrderStatusProps> = ({orderId, status })
                         Отменить
                     </div>
                 </button>
-                <button onClick={() => dispatch(changeOrderStatus({ id: orderId, changeStatus: OrderStatus.PREPARATION }))} className="btn btn-solid-blue">
+                <button onClick={() => dispatch(setOrderStatus({ id: orderId, newStatus: OrderStatus.PREPARATION }))} className="btn btn-solid-blue">
                     <div>
                         <FiCheck />
                     </div>
@@ -38,7 +38,7 @@ const ButtonOrderStatus: React.FC<ButtonOrderStatusProps> = ({orderId, status })
     if (status === OrderStatus.PREPARATION) {
         return (
             <div className="text-[14px]">
-                <button onClick={() => dispatch(changeOrderStatus({ id: orderId, changeStatus: OrderStatus.READY }))} className="btn btn-outline-indigo">
+                <button onClick={() => dispatch(setOrderStatus({ id: orderId, newStatus: OrderStatus.READY }))} className="btn btn-outline-indigo">
                     <div>
                         <FiCheck />
                     </div>
@@ -53,7 +53,7 @@ const ButtonOrderStatus: React.FC<ButtonOrderStatusProps> = ({orderId, status })
     if (status === OrderStatus.READY) {
         return (
             <div className="text-[14px]">
-                <button onClick={() => dispatch(changeOrderStatus({ id: orderId, changeStatus: OrderStatus.ONTHEWAY }))} className="btn btn-outline-indigo">
+                <button onClick={() => dispatch(setOrderStatus({ id: orderId, newStatus: OrderStatus.ONTHEWAY }))} className="btn btn-outline-indigo">
                     <div>
                         Завершить
                     </div>
