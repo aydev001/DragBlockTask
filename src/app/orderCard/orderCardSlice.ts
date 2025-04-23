@@ -107,19 +107,19 @@ const orderCardSlice = createSlice({
                 case ("new"): {
                     const newData = state.filtredItems.new.find(item => item.id === action.payload.id)
                     state.filtredItems.new = state.filtredItems.new.filter(order => order.id !== action.payload.id)
-                    state.filtredItems.preparation = [...state.filtredItems.preparation, {...newData, status : "preparation"}]
+                    state.filtredItems.ready.push(newData as IOrderCard)
                     break
                 }
                 case ("preparation"): {
                     const newData = state.filtredItems.preparation.find(item => item.id === action.payload.id)
                     state.filtredItems.preparation = state.filtredItems.preparation.filter(order => order.id !== action.payload.id)
-                    state.filtredItems.ready = [...state.filtredItems.ready, {...newData, status : "ready"}]
+                    state.filtredItems.ready.push(newData as IOrderCard)
                     break
                 }
                 case ("ready"): {
                     const newData = state.filtredItems.ready.find(item => item.id === action.payload.id)
                     state.filtredItems.ready = state.filtredItems.ready.filter(order => order.id !== action.payload.id)
-                    state.filtredItems.ontheway = [...state.filtredItems.ontheway, {...newData, status : "ontheway"}]
+                    state.filtredItems.ready.push(newData as IOrderCard)
                     break
                 }
 
